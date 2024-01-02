@@ -29,10 +29,12 @@ def c(text):
     """Displays 'C' followed by the value of <text>."""
     text = text.replace("_", " ")
     return "C {}".format(text)
-@app.route("/python/<text>")
-def python(text):
+
+@app.route("/python")
+@app.route("/python/<text>", strict_slashes=False)
+def python(text="is cool"):
+    """ Display 'Python by default followed by <text> """
     text = text.replace("_", " ")
-    text = "is cool"
     return "Python {}".format(text)
 
 if __name__ == "__main__":
